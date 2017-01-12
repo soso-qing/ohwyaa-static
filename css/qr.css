@@ -1,0 +1,37 @@
+.qr-wrap .qr-card .qr-card-content .item-content .qr-inner{
+    position: relative;
+}
+.qr-wrap .qr-card .qr-card-content .item-content .qr-inner .item-reward{
+    position: absolute;
+    top:20px;
+    right:10px;
+}
+.qr-wrap .qr-card .qr-card-content .activity-content{
+    padding:0 20px;
+    overflow : hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+
+}
+.qr-wrap .qr-card  .list-block .qr-inner .item-reward span{
+    margin-right:10px;
+}
+.qr-wrap .qr-card  .list-block .qr-inner:after{
+    height: 0px!important;;
+}
+.qr-wrap .content .qr-card .card-footer{
+    margin-top:20px;
+    padding:0 90px!important;
+}
+.qr-wrap .content .qr-card .card-footer span a{
+    margin-right:10px;
+}
+/*.qr-wrap .content .qr-card .card-header{
+    *//*background-color:linen;*//*
+    background-color:lightgray;
+}*/
+.infinite-scroll-preloader {
+    margin-top:-20px;
+}
