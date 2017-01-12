@@ -1,0 +1,16 @@
+.popup-release{
+    background-color: lightgray;
+    padding:5px;
+}
+.popup-release .common-box .release-editor{
+    height: 10rem;
+}
+.popup-release .common-box.reward-number .have-reward-number span{
+    margin-left: 15px;
+}
+.common-box-wrap .common-box .to-date{
+    border: none;
+}
+.common-box-wrap .common-box .data-label{
+    margin-right: 20px;
+}

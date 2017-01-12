@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="ohwyaa">
+    <link rel="stylesheet" href="css/mobile-app-sui.css"/>
+    <link rel="stylesheet" href="css/sm.css"/>
+    <link rel="stylesheet" href="font/fontawesome/font-awesome.css"/>
+    <link rel="stylesheet" href="font/iconfont/iconfont.css"/>
+    <link rel="stylesheet" href="css/relese.css"/>
+    <title></title>
+</head>
+<body>
+<div class="content">
+    <div class="content-block">
+        <p><a href="#" class="open-release">Open About Popup </a></p>
+    </div>
+
+</div>
+<!-- About Popup -->
+<div class="popup popup-release">
+    <div class="common-box-wrap">
+
+       <div class="common-box">
+           <input id="blogTitleDom" type="text" data-bind="value:blogTitleData" class="common-noborder-input needsclick" placeholder="悬赏标题，最多25个字" />
+       </div>
+        <div class="common-box">
+            <textarea id="editor-body" placeholder="问答内容" class="common-noborder-textarea release-editor"></textarea>
+        </div>
+        <div class="common-box">
+            <label class="data-label">截止日期</label>
+            <input type="text" id='datetime-picker' placeholder="截止日期" class="to-date"/>
+        </div>
+        <div class="common-box reward-number">
+            <p class="have-reward-number">可使用琴币数量<span>35</span></p>
+            <p>  <label class="data-label">悬赏琴币</label>
+                <input type="text" id='' placeholder="请输入悬赏金额" class="to-date"/>
+            </p>
+        </div>
+        <div class="common-box tools-wrap">
+            <ul class="tools-h">
+                <li class="tools-item tools-item-publish" style="float:right">
+                   <a href="javascript:;" class="button button-fill">发布</a>
+                </li>
+                <li class="tools-item tools-item-publish" style="float:right">
+                    <a href="javascript:;" class="button button-fill">取消</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
+<script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script>
+<script>
+    $(document).on('click','.open-release', function () {
+        $.popup('.popup-release');
+    });
+    $("#datetime-picker").calendar({
+        value: ['2015-12-05']
+    });
+</script>
+</body>
+</html>
