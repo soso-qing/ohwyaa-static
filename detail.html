@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="ohwyaa">
+    <link rel="stylesheet" href="css/sm.css"/>
+    <link rel="stylesheet" href="font/fontawesome/font-awesome.css"/>
+    <link rel="stylesheet" href="font/iconfont/iconfont.css"/>
+    <link rel="stylesheet" href="css/mobile-app-sui.css"/>
+    <title></title>
+</head>
+<body>
+
+<!--详情页面 -->
+<div class="page" id="detail">
+    <!-- ko if: errorMsg()-->
+    <div class="content" data-bind="text:errorMsg"></div>
+    <!-- /ko -->
+
+    <div class="content pull-to-refresh-content" >
+        <!-- 默认的下拉刷新层 -->
+        <div class="pull-to-refresh-layer">
+            <div class="preloader"></div>
+            <div class="pull-to-refresh-arrow"></div>
+        </div>
+        <!-- ko if: blogData() && blogWriter() -->
+        <!-- 下面是正文 -->
+        <div class="content-block no-margin no-padding" style="min-height:101%;overflow-x: hidden;">
+
+            <!-- 博文主体 -->
+            <div class="card">
+                <div class="card-content">
+                    <div class="card-content-inner" >
+                        <div class='blog-title' data-bind="html: blogData().title">标题</div>
+                        <div class="blog-sub-title">
+                            <a data-bind="attr:{href:'${ctx}/m/userinfo?userid='+blogWriter().id}">
+                                <div class="avatar small float-left">
+                                    <img data-bind="attr: { src: blogWriter().smallAvatarUrl}" />
+                                </div>
+                            </a>
+
+                            <div class="info float-left">
+                                <a data-bind="text: blogWriter().name,attr:{href:'${ctx}/m/userinfo?userid='+blogWriter().id}"></a>
+                                <!-- ko if: blogWriter().isVip -->
+                                <i class="icon iconfont vipicon">&#xe610;</i>
+                                <!-- /ko -->
+                            </div>
+                            <div class="info float-left">
+                                <span class="time small-font" data-bind="text:blogData().createTime"></span>
+                            </div>
+                            <span class="read abs-right small-font "><span data-bind="text:blogData().readAmount"></span>13阅读</span>
+                        </div>
+
+                        <div class='blog-content' data-bind="html: blogData().content"></div>
+                        <!-- ko if: blogData().blogAttachmentVO!= null -->
+                        <a target="_blank" data-bind="attr:{href:'${ctx}/blog/attachment/'+blogData().id+'/'+blogData().blogAttachmentVO.id+'/download',download:blogData().title}" >
+                            <i class="blog-download-icon icon iconfont">&#xe61c;</i>
+                            <span data-bind="text:blogData().blogAttachmentVO.attachmentName+'.'+blogData().blogAttachmentVO.attachmentType+'  大小('+blogData().blogAttachmentVO.friendlyAttachmentSize+')  下载('+blogData().attachmentDownloadedAmount+')'"></span>
+                        </a>
+                        <!-- /ko -->
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <span>&nbsp;</span>
+		      		<span style="display:block;">
+		      			<ul class='tools-h'>
+                            <li class='tools-item' data-action="favor" data-bind="attr:{'blogId':blogData().id}">
+                                <i data-bind="css: { favored : collectedState()==true }" class='tools-icon iconfont staricon'>&#xe609;</i>
+                                <span class='tools-text' data-bind="text:blogData().collectedAmount">0</span>
+                            </li>
+                            <li class='tools-item' data-action="like" data-bind="attr:{'blogId':blogData().id}">
+                                <i data-bind="css: { liked : likedState()==true }" class='tools-icon iconfont'>&#xe613;</i>
+                                <span class='tools-text' data-bind="text:blogData().likedAmount">0</span>
+                            </li>
+                            <li class='tools-item' data-action="notlike" data-bind="attr:{'blogId':blogData().id}">
+                                <i data-bind="css: { liked : likedState()==true }" class='tools-icon iconfont'>&#xe613;</i>
+                                <span class='tools-text' data-bind="text:blogData().likedAmount">0</span>
+                            </li>
+                            <li class='tools-item' data-bind="click:moreControlEvent">
+                                <i class='tools-icon iconfont'>&#xe603;</i>
+                            </li>
+                        </ul>
+		      		</span>
+                </div>
+            </div>
+
+            <!-- 博文评论 -->
+            <div class="card" id="commentDiv">
+                <div class="card-header">
+                    <span>评论（1<span data-bind="text:commentsList().length"></span>）</span>
+                    <span><a href="javascript:void(0)" data-bind="click:doComment">写评论</a></span>
+                </div>
+                <div class="card-content">
+                    <div class="list-block media-list">
+                        <ul>
+                            <!-- ko foreach: commentsList -->
+                            <li class='list-item'>
+                                <a href="javascript:void(0)" class="item-link comment-actions" data-bind="click:$parent.commentItemClickEvent, clickBubble: false">
+                                    <div class='list-item-inner'>
+                                        <div class="avatar middle float-left" data-bind="click:$parent.showUserInfo, clickBubble: false">
+                                            <img data-bind="attr: { src: commenterInfo.mobileMiddleAvatarUrl}"/>
+                                        </div>
+                                        <div class="info" data-bind="click:$parent.showUserInfo, clickBubble: false">
+
+                                            <!-- ko if: anonymousFlag==true -->
+                                            <span class="user-name">匿名用户</span>
+                                            <!-- /ko -->
+
+                                            <!-- ko if: anonymousFlag==false -->
+                                            <span class="user-name" data-bind="text:commenterInfo.name"></span>
+                                            <!-- ko if: commenterInfo.isVip -->
+                                            <i class="icon iconfont vipicon">&#xe610;</i>
+                                            <!-- /ko -->
+                                            <!-- /ko -->
+
+                                        </div>
+                                        <div class="info" style='margin: 0.1rem 0 0 2rem;overflow: visible;' data-bind="html:content"></div>
+                                        <ul class='tools-h abs-top-right' style='top:0.6rem;right:0.6rem'>
+                                            <li class='tools-item'>
+                                                <i class='tools-icon iconfont' data-bind="css: { liked : likedState()==true }">&#xe613;</i>
+                                                <span class='tools-text small-text' data-bind="text:totalLike">1</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </a>
+                            </li>
+                            <!-- /ko -->
+                            <!-- ko if: blogData().commentedAmount==0 -->
+                            <li class='list-item'>
+                                <div class="list-item-inner align-center">无评论</div>
+                            </li>
+                            <!-- /ko -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /ko -->
+    </div>
+</div>
+
+
+<script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
+<script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script>
+
+</body>
+</html>
