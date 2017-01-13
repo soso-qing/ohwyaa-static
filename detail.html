@@ -34,31 +34,31 @@
             <div class="card">
                 <div class="card-content">
                     <div class="card-content-inner" >
-                        <div class='blog-title' data-bind="html: blogData().title">标题</div>
+                        <div class='blog-title'>标题</div>
                         <div class="blog-sub-title">
-                            <a data-bind="attr:{href:'${ctx}/m/userinfo?userid='+blogWriter().id}">
+                            <a href="javascript:;">
                                 <div class="avatar small float-left">
-                                    <img data-bind="attr: { src: blogWriter().smallAvatarUrl}" />
+                                    <img />
                                 </div>
                             </a>
 
                             <div class="info float-left">
-                                <a data-bind="text: blogWriter().name,attr:{href:'${ctx}/m/userinfo?userid='+blogWriter().id}"></a>
+                                <a href="javascript:;"></a>
                                 <!-- ko if: blogWriter().isVip -->
                                 <i class="icon iconfont vipicon">&#xe610;</i>
                                 <!-- /ko -->
                             </div>
                             <div class="info float-left">
-                                <span class="time small-font" data-bind="text:blogData().createTime"></span>
+                                <span class="time small-font"></span>
                             </div>
-                            <span class="read abs-right small-font "><span data-bind="text:blogData().readAmount"></span>13阅读</span>
+                            <span class="read abs-right small-font "><span>13</span>阅读</span>
                         </div>
 
-                        <div class='blog-content' data-bind="html: blogData().content"></div>
+                        <div class='blog-content'></div>
                         <!-- ko if: blogData().blogAttachmentVO!= null -->
-                        <a target="_blank" data-bind="attr:{href:'${ctx}/blog/attachment/'+blogData().id+'/'+blogData().blogAttachmentVO.id+'/download',download:blogData().title}" >
+                        <a href="javascript:;">
                             <i class="blog-download-icon icon iconfont">&#xe61c;</i>
-                            <span data-bind="text:blogData().blogAttachmentVO.attachmentName+'.'+blogData().blogAttachmentVO.attachmentType+'  大小('+blogData().blogAttachmentVO.friendlyAttachmentSize+')  下载('+blogData().attachmentDownloadedAmount+')'"></span>
+                            <span></span>
                         </a>
                         <!-- /ko -->
                     </div>
@@ -67,19 +67,19 @@
                     <span>&nbsp;</span>
 		      		<span style="display:block;">
 		      			<ul class='tools-h'>
-                            <li class='tools-item' data-action="favor" data-bind="attr:{'blogId':blogData().id}">
+                            <li class='tools-item'>
                                 <i data-bind="css: { favored : collectedState()==true }" class='tools-icon iconfont staricon'>&#xe609;</i>
-                                <span class='tools-text' data-bind="text:blogData().collectedAmount">0</span>
+                                <span class='tools-text'>0</span>
                             </li>
-                            <li class='tools-item' data-action="like" data-bind="attr:{'blogId':blogData().id}">
+                            <li class='tools-item'>
                                 <i data-bind="css: { liked : likedState()==true }" class='tools-icon iconfont'>&#xe613;</i>
-                                <span class='tools-text' data-bind="text:blogData().likedAmount">0</span>
+                                <span class='tools-text'>0</span>
                             </li>
-                            <li class='tools-item' data-action="notlike" data-bind="attr:{'blogId':blogData().id}">
+                            <li class='tools-item'>
                                 <i data-bind="css: { liked : likedState()==true }" class='tools-icon iconfont'>&#xe613;</i>
-                                <span class='tools-text' data-bind="text:blogData().likedAmount">0</span>
+                                <span class='tools-text'>0</span>
                             </li>
-                            <li class='tools-item' data-bind="click:moreControlEvent">
+                            <li class='tools-item'>
                                 <i class='tools-icon iconfont'>&#xe603;</i>
                             </li>
                         </ul>
@@ -90,20 +90,20 @@
             <!-- 博文评论 -->
             <div class="card" id="commentDiv">
                 <div class="card-header">
-                    <span>评论（1<span data-bind="text:commentsList().length"></span>）</span>
-                    <span><a href="javascript:void(0)" data-bind="click:doComment">写评论</a></span>
+                    <span>评论（<span>1</span>）</span>
+                    <span><a href="javascript:void(0)">写评论</a></span>
                 </div>
                 <div class="card-content">
                     <div class="list-block media-list">
                         <ul>
                             <!-- ko foreach: commentsList -->
                             <li class='list-item'>
-                                <a href="javascript:void(0)" class="item-link comment-actions" data-bind="click:$parent.commentItemClickEvent, clickBubble: false">
+                                <a href="javascript:void(0)" class="item-link comment-actions">
                                     <div class='list-item-inner'>
-                                        <div class="avatar middle float-left" data-bind="click:$parent.showUserInfo, clickBubble: false">
-                                            <img data-bind="attr: { src: commenterInfo.mobileMiddleAvatarUrl}"/>
+                                        <div class="avatar middle float-left">
+                                            <img />
                                         </div>
-                                        <div class="info" data-bind="click:$parent.showUserInfo, clickBubble: false">
+                                        <div class="info">
 
                                             <!-- ko if: anonymousFlag==true -->
                                             <span class="user-name">匿名用户</span>
@@ -117,11 +117,11 @@
                                             <!-- /ko -->
 
                                         </div>
-                                        <div class="info" style='margin: 0.1rem 0 0 2rem;overflow: visible;' data-bind="html:content"></div>
+                                        <div class="info" style='margin: 0.1rem 0 0 2rem;overflow: visible;'></div>
                                         <ul class='tools-h abs-top-right' style='top:0.6rem;right:0.6rem'>
                                             <li class='tools-item'>
                                                 <i class='tools-icon iconfont' data-bind="css: { liked : likedState()==true }">&#xe613;</i>
-                                                <span class='tools-text small-text' data-bind="text:totalLike">1</span>
+                                                <span class='tools-text small-text'>1</span>
                                             </li>
                                         </ul>
                                     </div>
