@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="ohwyaa">
+    <link rel="stylesheet" href="css/mobile-app-sui.css"/>
+    <link rel="stylesheet" href="css/sm.css"/>
+    <link rel="stylesheet" href="font/fontawesome/font-awesome.css"/>
+    <link rel="stylesheet" href="font/iconfont/iconfont.css"/>
+    <link rel="stylesheet" href="css/relese.css"/>
+    <title></title>
+    <style>
+        .label-switch input[type=checkbox]:checked+.checkbox {
+            background: #ef7664!important;
+        }
+    </style>
+</head>
+<body>
+<div class="content qa-single-coment-item">
+    <div class="content-block">
+        <p><a href="#" class="open-release">Open About Popup </a></p>
+    </div>
+
+</div>
+<!-- About Popup -->
+<div class="popup popup-release">
+    <div class="common-box-wrap">
+
+
+        <div class="common-box">
+            <textarea id="editor-body" placeholder="回复内容,500字以内" class="common-noborder-textarea release-editor"></textarea>
+        </div>
+
+        <div class="common-box" style="overflow:hidden">
+         <label style="float:left;padding-top:0.25em">匿名发送</label>
+         <label class="label-switch" style="float:right" data-bind="click:anonymousEvent">
+            <input type="checkbox" data-bind="attr:{checked:isAnonymous()==true}">
+             <div class="checkbox"></div>
+
+         </label>
+
+
+        </div>
+        <div class="common-box tools-wrap">
+            <ul class="tools-h">
+                <li class="tools-item tools-item-publish" style="float:right">
+                    <a href="javascript:;" class="button button-fill">发布</a>
+                </li>
+                <li class="tools-item tools-item-publish" style="float:right">
+                    <a href="javascript:;" class="button button-fill">取消</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="common-box-wrap" data-bind="style: { display: nextActionFlag()? 'block' : 'none' }">
+
+        <div class="common-box" style="height: calc(100% - 4rem); overflow:auto;">
+            <ul style="padding-left: 0">
+                <li class="addtotextarea" style="list-style-type:none;padding:5px 5px 10px 5px;border-bottom: .02rem solid #e9e9e9;">为你痴，为你狂，为你框框撞大墙（超赞）</li>
+                <li class="addtotextarea" style="list-style-type:none;padding:10px 5px;border-bottom: .02rem solid #e9e9e9;">啥都不用说了，就是要给你一个Like（直接赞）</li>
+                <li class="addtotextarea" style="list-style-type:none;padding:10px 5px;border-bottom: .02rem solid #e9e9e9;">走过路过不要错过，你的博文写的不错（一般赞）</li>
+                <li class="addtotextarea" style="list-style-type:none;padding:10px 5px;border-bottom: .02rem solid #e9e9e9;">。。。不是无语，只是你的观点让我颤抖了三下（强烈反对）</li>
+                <li class="addtotextarea" style="list-style-type:none;padding:10px 5px;border-bottom: .02rem solid #e9e9e9;">你还能再逗比点么（直接反对）</li>
+                <li class="addtotextarea" style="list-style-type:none;padding:10px 5px;border-bottom: .02rem solid #e9e9e9;">你的言论因为太过XX，已被地球宇航局带到火星永久销毁（一般反对）</li>
+                <li class="addtotextarea" style="list-style-type:none;padding:10px 5px;">为你苦，为你累，为你哗哗掉眼泪（中性同情）</li>
+            </ul>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+<script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
+<script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script>
+<script>
+    $(document).on('click','.open-release', function () {
+        $.popup('.popup-release');
+    });
+
+</script>
+</body>
+</html>
